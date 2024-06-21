@@ -11,7 +11,7 @@
     --very_grayish_blue: hsl(210,4%,67%);
     --dark_grayish_blue: hsl(232,10%,55%);
     --white: hsl(0,0%,100%);
-    --header_color: #1ad8ed;
+    --header_color: #00c3ff7e;
 
     --family: "Barlow", sans-serif ;
     --family2: "Fraunces", serif; 
@@ -46,11 +46,16 @@ html{
 
 header{
     width: 100%;
-    min-height: 66px;
+    min-height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 999;
+    background-color: var(--header_color);
+    padding: 0 100px;
 }
 
 .logo{
@@ -117,6 +122,11 @@ ul.menu li.menu__list {
     background-color: var(--very_grayish_blue);
     color: var(--white);
 }
+
+#triangle{
+    display: none;
+}
+
 /* repsonsive menu */
 /* @media at 480px */
 @media (max-width: 740px) {
@@ -141,10 +151,27 @@ ul.menu li.menu__list {
         text-align: center;
         display: none;
     }
+
+
+
     header.active nav{
         display: initial;
         z-index: 9;
-    }
+    }    
+    header.active #triangle{
+        display: initial;
+        width: 0px; 
+        height: 0px; 
+        position: absolute;
+        bottom: 97%;
+        right: -13px;
+        transform: rotate(-45deg);
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        
+        border-top: 20px solid var(--white);
+        position: absolute;
+      }
     ul.menu{
         display: flex;
         flex-direction: column;
@@ -207,7 +234,7 @@ ul.menu li.menu__list {
 @media (max-width: 480px) {
     nav{
         position: absolute;
-        top: 90px;
+        top: 100px;
         right: calc(50% - 160px);
         width: 80%;
         background-color: var(--white);
@@ -215,9 +242,11 @@ ul.menu li.menu__list {
         justify-content: space-between;
         height: 300px;
         z-index: 99;
+        padding-top: 29px;
         text-align: center;
         display: none;
     }
+
 }
 
 /* #### hero ### */
@@ -354,6 +383,7 @@ ul.menu li.menu__list {
 .overley_text{
     position: absolute;
     top: 50%;
+    opacity: 1;
     left: calc(50% - 70px);
     text-align: left;
     color: var(--very_dark_des_blue);
